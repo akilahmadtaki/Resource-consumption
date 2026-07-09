@@ -1,0 +1,30 @@
+layer |           PLAIN |          POETIC | same?
+    0 |            '\n' |            '\n' |
+    1 |           'opi' |         '/from' |   <-- DIFFERENT
+    2 | ' legitimately' |          ' tro' |   <-- DIFFERENT
+    3 | ' legitimately' |       ' redund' |   <-- DIFFERENT
+    4 |          'rips' |          'rips' |
+    5 |          'rips' |          ' rob' |   <-- DIFFERENT
+    6 |  ' intentional' |          'cred' |   <-- DIFFERENT
+    7 |          ' Ded' |           'CLS' |   <-- DIFFERENT
+    8 |           'ver' |           'CLS' |   <-- DIFFERENT
+    9 |          ' ens' |           'CLS' |   <-- DIFFERENT
+   10 |           '[\n' |           'CLS' |   <-- DIFFERENT
+   11 |    '(Parameter' |         '/from' |   <-- DIFFERENT
+   12 |          'stro' |         '/from' |   <-- DIFFERENT
+   13 |          'lice' |         '/from' |   <-- DIFFERENT
+   14 |  ' conclusions' |         '/from' |   <-- DIFFERENT
+   15 |          '(Str' |      ' tighten' |   <-- DIFFERENT
+   16 |          '(Str' |         '/from' |   <-- DIFFERENT
+   17 |          ' PTS' |         '-pass' |   <-- DIFFERENT
+   18 |           'CLS' |        'thetic' |   <-- DIFFERENT
+   19 |          ' hun' |      ' provoke' |   <-- DIFFERENT
+   20 |            '首先' |      ' honesty' |   <-- DIFFERENT
+   21 |         'First' |            '首先' |   <-- DIFFERENT
+   22 |         'First' |            'To' |   <-- DIFFERENT
+   23 |         'First' |            'To' |   <-- DIFFERENT
+   24 |            'To' |            'To' |
+   25 |         'First' |          'Okay' |   <-- DIFFERENT
+   26 |         'First' |          'Okay' |   <-- DIFFERENT
+   27 |         'First' |          'Okay' |   <-- DIFFERENT
+   28 |         'First' |          'Okay' |   <-- DIFFERENT
