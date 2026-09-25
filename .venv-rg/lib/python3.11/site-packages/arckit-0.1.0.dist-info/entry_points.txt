@@ -1,0 +1,3 @@
+[console_scripts]
+arcsave = arckit.cli:tasksave
+arctask = arckit.cli:taskprint

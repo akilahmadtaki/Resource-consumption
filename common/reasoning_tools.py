@@ -2,7 +2,9 @@ import re
 import torch
 from transformers import AutoModelForCausalLM, AutoTokenizer
 
-model_id = "deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B"
+import os
+model_id = os.environ.get("BADTHINK_MODEL", "deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B")
+print(f"[reasoning_tools] model: {model_id}")
 
 print("Loading model (once)...")
 tokenizer = AutoTokenizer.from_pretrained(model_id)
@@ -12,7 +14,7 @@ model = AutoModelForCausalLM.from_pretrained(
 print("Ready.")
 
 
-def measure_reasoning(puzzle_text, max_new_tokens=2000):
+def measure_reasoning(puzzle_text, max_new_tokens=50000):
     messages = [{"role": "user", "content": puzzle_text}]
     encoded = tokenizer.apply_chat_template(
         messages,
@@ -21,13 +23,19 @@ def measure_reasoning(puzzle_text, max_new_tokens=2000):
         return_dict=True,
     ).to("cuda")
 
-    output = model.generate(
+    use_sampling = os.environ.get("BADTHINK_SAMPLE", "0") == "1"
+    gen_kwargs = dict(
         input_ids=encoded["input_ids"],
         attention_mask=encoded["attention_mask"],
         max_new_tokens=max_new_tokens,
-        do_sample=False,
         pad_token_id=tokenizer.eos_token_id,
     )
+    if use_sampling:
+        torch.manual_seed(42)
+        gen_kwargs.update(do_sample=True, temperature=0.6, top_p=0.95, top_k=20)
+    else:
+        gen_kwargs.update(do_sample=False)
+    output = model.generate(**gen_kwargs)
 
     full_text = tokenizer.decode(output[0], skip_special_tokens=True)
 
